@@ -34,6 +34,10 @@ class FileDeleteTestCase(unittest.TestCase):
     tempfile.gettempdir(): returns the name of the directory used for temporary files
     On Windows: directories, C:\\TEMP, C:\\TMP, \\TEMP, and \\TMP, in that order.
     Other platforms, the directories /tmp, /var/tmp, and /usr/tmp, in that order
+
+    Problems with this implementation style:
+    i) a temporary file is created and then deleted each time the test is run.
+    ii) no way of testing whether the file_delete method properly passes the argument down to the os.remove() call
     """
     tmpFilePath = os.path.join(tempfile.gettempdir(), "tmp-testfile.txt")
 
