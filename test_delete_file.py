@@ -96,14 +96,7 @@ class FileDeleteTestCaseWithMockingOS(unittest.TestCase):
     Other platforms, the directories /tmp, /var/tmp, and /usr/tmp, in that order
 
     Adv:
-    i) the os.remove() call in the file_delete method is tested with the right arguments
-
-    Problems:
-    i) it's better to mock the os module itself rather than file_delete.os. For example, if the 'tempfile' module
-    is to be mocked in this project, 'newProject.app.example_function', the mock will need to be applied to
-    'newProject.app.tempfile', since each module has its own import.
-    'file_delete' will have its own 'os' module at runtime.
-    It's safer to mock an item where it is implemented, not where it came from
+    i) checks that the internal functionality of methods are called without any side effects
     """
 
     @mock.patch("file_deletion.os.path")
